@@ -1,6 +1,8 @@
-const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const path = require('path');
+const { CleanWebpackPlugin } = require('clean-webpack-plugin');
+const HtmlMinimizerPlugin = require('html-minimizer-webpack-plugin');
+const CssMinimizerPlugin = require('css-minimizer-webpack-plugin');
 
 module.exports = {
     entry: './src/index.js',
@@ -33,6 +35,14 @@ module.exports = {
         ]
     },
     plugins: [
-        new HtmlWebpackPlugin()
-    ]
+        new HtmlWebpackPlugin(),
+        new CleanWebpackPlugin()
+    ],
+    optimization: {
+        minimize: true,
+        minimizer: [
+            new HtmlMinimizerPlugin(),
+            new CssMinimizerPlugin()
+        ]
+    }
 }
