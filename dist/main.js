@@ -1251,113 +1251,6 @@ function TodoProvider(props) {
 }
 
 
-// EXTERNAL MODULE: ./node_modules/css-loader/dist/cjs.js!./src/TodoCounter/TodoCounter.css
-var TodoCounter = __webpack_require__(34);
-;// CONCATENATED MODULE: ./src/TodoCounter/TodoCounter.css
-
-      
-      
-      
-      
-      
-      
-      
-      
-      
-
-var TodoCounter_options = {};
-
-TodoCounter_options.styleTagTransform = (styleTagTransform_default());
-TodoCounter_options.setAttributes = (setAttributesWithoutAttributes_default());
-
-      TodoCounter_options.insert = insertBySelector_default().bind(null, "head");
-    
-TodoCounter_options.domAPI = (styleDomAPI_default());
-TodoCounter_options.insertStyleElement = (insertStyleElement_default());
-
-var TodoCounter_update = injectStylesIntoStyleTag_default()(TodoCounter/* default */.Z, TodoCounter_options);
-
-
-
-
-       /* harmony default export */ var TodoCounter_TodoCounter = (TodoCounter/* default */.Z && TodoCounter/* default.locals */.Z.locals ? TodoCounter/* default.locals */.Z.locals : undefined);
-
-;// CONCATENATED MODULE: ./src/TodoCounter/index.js
-
-
-
-
-function src_TodoCounter_TodoCounter({
-  total,
-  completed
-}) {
-  const {
-    completedTodos,
-    totalTodos
-  } = react.useContext(TodoContext);
-  return /*#__PURE__*/react.createElement("h2", {
-    className: "TodoCounter"
-  }, "You have completed ", completedTodos, " of ", totalTodos, " TODOs");
-}
-
-
-// EXTERNAL MODULE: ./node_modules/css-loader/dist/cjs.js!./src/TodoSearch/TodoSearch.css
-var TodoSearch = __webpack_require__(119);
-;// CONCATENATED MODULE: ./src/TodoSearch/TodoSearch.css
-
-      
-      
-      
-      
-      
-      
-      
-      
-      
-
-var TodoSearch_options = {};
-
-TodoSearch_options.styleTagTransform = (styleTagTransform_default());
-TodoSearch_options.setAttributes = (setAttributesWithoutAttributes_default());
-
-      TodoSearch_options.insert = insertBySelector_default().bind(null, "head");
-    
-TodoSearch_options.domAPI = (styleDomAPI_default());
-TodoSearch_options.insertStyleElement = (insertStyleElement_default());
-
-var TodoSearch_update = injectStylesIntoStyleTag_default()(TodoSearch/* default */.Z, TodoSearch_options);
-
-
-
-
-       /* harmony default export */ var TodoSearch_TodoSearch = (TodoSearch/* default */.Z && TodoSearch/* default.locals */.Z.locals ? TodoSearch/* default.locals */.Z.locals : undefined);
-
-;// CONCATENATED MODULE: ./src/TodoSearch/index.js
-
-
-
-
-function src_TodoSearch_TodoSearch() {
-  const {
-    searchValue,
-    setSearchValue
-  } = react.useContext(TodoContext);
-
-  const onSearchValueChange = event => {
-    console.log(event.target.value);
-    setSearchValue(event.target.value);
-  };
-
-  return [/*#__PURE__*/react.createElement("input", {
-    className: "TodoSearch",
-    placeholder: "Onions",
-    value: searchValue,
-    onChange: onSearchValueChange
-  })];
-}
-
-;
-
 // EXTERNAL MODULE: ./node_modules/css-loader/dist/cjs.js!./src/CreateTodoButton/CreateTodoButton.css
 var CreateTodoButton = __webpack_require__(432);
 ;// CONCATENATED MODULE: ./src/CreateTodoButton/CreateTodoButton.css
@@ -1619,8 +1512,127 @@ function src_TodoForm_TodoForm() {
 }
 
 
-;// CONCATENATED MODULE: ./src/App/AppUI.js
+// EXTERNAL MODULE: ./node_modules/css-loader/dist/cjs.js!./src/TodoCounter/TodoCounter.css
+var TodoCounter = __webpack_require__(34);
+;// CONCATENATED MODULE: ./src/TodoCounter/TodoCounter.css
 
+      
+      
+      
+      
+      
+      
+      
+      
+      
+
+var TodoCounter_options = {};
+
+TodoCounter_options.styleTagTransform = (styleTagTransform_default());
+TodoCounter_options.setAttributes = (setAttributesWithoutAttributes_default());
+
+      TodoCounter_options.insert = insertBySelector_default().bind(null, "head");
+    
+TodoCounter_options.domAPI = (styleDomAPI_default());
+TodoCounter_options.insertStyleElement = (insertStyleElement_default());
+
+var TodoCounter_update = injectStylesIntoStyleTag_default()(TodoCounter/* default */.Z, TodoCounter_options);
+
+
+
+
+       /* harmony default export */ var TodoCounter_TodoCounter = (TodoCounter/* default */.Z && TodoCounter/* default.locals */.Z.locals ? TodoCounter/* default.locals */.Z.locals : undefined);
+
+;// CONCATENATED MODULE: ./src/TodoCounter/index.js
+
+
+
+function src_TodoCounter_TodoCounter({
+  totalTodos,
+  completedTodos
+}) {
+  return /*#__PURE__*/react.createElement("h2", {
+    className: "TodoCounter"
+  }, "You have completed ", completedTodos, " of ", totalTodos, " TODOs");
+}
+
+
+// EXTERNAL MODULE: ./node_modules/css-loader/dist/cjs.js!./src/TodoSearch/TodoSearch.css
+var TodoSearch = __webpack_require__(119);
+;// CONCATENATED MODULE: ./src/TodoSearch/TodoSearch.css
+
+      
+      
+      
+      
+      
+      
+      
+      
+      
+
+var TodoSearch_options = {};
+
+TodoSearch_options.styleTagTransform = (styleTagTransform_default());
+TodoSearch_options.setAttributes = (setAttributesWithoutAttributes_default());
+
+      TodoSearch_options.insert = insertBySelector_default().bind(null, "head");
+    
+TodoSearch_options.domAPI = (styleDomAPI_default());
+TodoSearch_options.insertStyleElement = (insertStyleElement_default());
+
+var TodoSearch_update = injectStylesIntoStyleTag_default()(TodoSearch/* default */.Z, TodoSearch_options);
+
+
+
+
+       /* harmony default export */ var TodoSearch_TodoSearch = (TodoSearch/* default */.Z && TodoSearch/* default.locals */.Z.locals ? TodoSearch/* default.locals */.Z.locals : undefined);
+
+;// CONCATENATED MODULE: ./src/TodoSearch/index.js
+
+
+
+function src_TodoSearch_TodoSearch({
+  searchValue,
+  setSearchValue
+}) {
+  const onSearchValueChange = event => {
+    console.log(event.target.value);
+    setSearchValue(event.target.value);
+  };
+
+  return [/*#__PURE__*/react.createElement("input", {
+    className: "TodoSearch",
+    placeholder: "Onions",
+    value: searchValue,
+    onChange: onSearchValueChange
+  })];
+}
+
+;
+
+;// CONCATENATED MODULE: ./src/TodoHeader/index.js
+
+
+
+
+function TodoHeader({
+  completedTodos,
+  totalTodos,
+  searchValue,
+  setSearchValue
+}) {
+  return /*#__PURE__*/react.createElement("header", null, /*#__PURE__*/react.createElement(src_TodoCounter_TodoCounter, {
+    totalTodos: totalTodos,
+    completedTodos: completedTodos
+  }), /*#__PURE__*/react.createElement(src_TodoSearch_TodoSearch, {
+    searchValue: searchValue,
+    setSearchValue: setSearchValue
+  }));
+}
+
+
+;// CONCATENATED MODULE: ./src/App/AppUI.js
 
 
 
@@ -1638,9 +1650,18 @@ function AppUI() {
     completeTodos,
     deleteTodos,
     openModal,
-    setOpenModal
+    setOpenModal,
+    completedTodos,
+    totalTodos,
+    searchValue,
+    setSearchValue
   } = react.useContext(TodoContext);
-  return /*#__PURE__*/react.createElement(react.Fragment, null, /*#__PURE__*/react.createElement(src_TodoCounter_TodoCounter, null), /*#__PURE__*/react.createElement(src_TodoSearch_TodoSearch, null), /*#__PURE__*/react.createElement(src_TodoList_TodoList, null, error && /*#__PURE__*/react.createElement("p", null, "Something wrong"), loading && /*#__PURE__*/react.createElement("p", null, "Loading"), !loading && !searchedTodos.length && /*#__PURE__*/react.createElement("p", null, "Create your first TODO"), searchedTodos.map(todo => /*#__PURE__*/react.createElement(src_TodoItem_TodoItem, {
+  return /*#__PURE__*/react.createElement(react.Fragment, null, /*#__PURE__*/react.createElement(TodoHeader, {
+    completedTodos: completedTodos,
+    totalTodos: totalTodos,
+    searchValue: searchValue,
+    setSearchValue: setSearchValue
+  }), /*#__PURE__*/react.createElement(src_TodoList_TodoList, null, error && /*#__PURE__*/react.createElement("p", null, "Something wrong"), loading && /*#__PURE__*/react.createElement("p", null, "Loading"), !loading && !searchedTodos.length && /*#__PURE__*/react.createElement("p", null, "Create your first TODO"), searchedTodos.map(todo => /*#__PURE__*/react.createElement(src_TodoItem_TodoItem, {
     key: todo.text,
     text: todo.text,
     completed: todo.completed,
