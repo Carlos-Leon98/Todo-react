@@ -1141,7 +1141,7 @@ var update = injectStylesIntoStyleTag_default()(cjs_js_src/* default */.Z, optio
 
        /* harmony default export */ var src = (cjs_js_src/* default */.Z && cjs_js_src/* default.locals */.Z.locals ? cjs_js_src/* default.locals */.Z.locals : undefined);
 
-;// CONCATENATED MODULE: ./src/TodoContext/useLocalStorage.js
+;// CONCATENATED MODULE: ./src/App/useLocalStorage.js
 
 
 function useLocalStorage(itemName, initialValue) {
@@ -1183,12 +1183,11 @@ function useLocalStorage(itemName, initialValue) {
 }
 
 
-;// CONCATENATED MODULE: ./src/TodoContext/index.js
+;// CONCATENATED MODULE: ./src/App/useTodos.js
 
 
-const TodoContext = /*#__PURE__*/react.createContext();
 
-function TodoProvider(props) {
+function useTodos() {
   const {
     item: todos,
     saveItems: saveTodos,
@@ -1233,21 +1232,19 @@ function TodoProvider(props) {
     saveTodos(newTodos);
   };
 
-  return /*#__PURE__*/react.createElement(TodoContext.Provider, {
-    value: {
-      loading,
-      totalTodos,
-      completedTodos,
-      searchValue,
-      setSearchValue,
-      searchedTodos,
-      addTodos,
-      completeTodos,
-      deleteTodos,
-      openModal,
-      setOpenModal
-    }
-  }, props.children);
+  return {
+    loading,
+    totalTodos,
+    completedTodos,
+    searchValue,
+    setSearchValue,
+    searchedTodos,
+    addTodos,
+    completeTodos,
+    deleteTodos,
+    openModal,
+    setOpenModal
+  };
 }
 
 
@@ -1471,13 +1468,11 @@ var TodoForm_update = injectStylesIntoStyleTag_default()(TodoForm/* default */.Z
 
 
 
-
-function src_TodoForm_TodoForm() {
+function src_TodoForm_TodoForm({
+  addTodos,
+  setOpenModal
+}) {
   const [newTodoValue, setNewTodoValue] = react.useState('');
-  const {
-    addTodos,
-    setOpenModal
-  } = react.useContext(TodoContext);
 
   const onChange = event => {
     setNewTodoValue(event.target.value);
@@ -1509,6 +1504,16 @@ function src_TodoForm_TodoForm() {
     type: "submit",
     className: "TodoForm-button TodoForm-button--add"
   }, "Add")));
+}
+
+
+;// CONCATENATED MODULE: ./src/TodoHeader/index.js
+
+
+function TodoHeader({
+  children
+}) {
+  return /*#__PURE__*/react.createElement("header", null, children);
 }
 
 
@@ -1611,28 +1616,7 @@ function src_TodoSearch_TodoSearch({
 
 ;
 
-;// CONCATENATED MODULE: ./src/TodoHeader/index.js
-
-
-
-
-function TodoHeader({
-  completedTodos,
-  totalTodos,
-  searchValue,
-  setSearchValue
-}) {
-  return /*#__PURE__*/react.createElement("header", null, /*#__PURE__*/react.createElement(src_TodoCounter_TodoCounter, {
-    totalTodos: totalTodos,
-    completedTodos: completedTodos
-  }), /*#__PURE__*/react.createElement(src_TodoSearch_TodoSearch, {
-    searchValue: searchValue,
-    setSearchValue: setSearchValue
-  }));
-}
-
-
-;// CONCATENATED MODULE: ./src/App/AppUI.js
+;// CONCATENATED MODULE: ./src/App/index.js
 
 
 
@@ -1642,7 +1626,9 @@ function TodoHeader({
 
 
 
-function AppUI() {
+
+
+function App() {
   const {
     error,
     loading,
@@ -1651,42 +1637,30 @@ function AppUI() {
     deleteTodos,
     openModal,
     setOpenModal,
+    addTodos,
     completedTodos,
     totalTodos,
     searchValue,
     setSearchValue
-  } = react.useContext(TodoContext);
-  return /*#__PURE__*/react.createElement(react.Fragment, null, /*#__PURE__*/react.createElement(TodoHeader, {
+  } = useTodos();
+  return /*#__PURE__*/react.createElement(react.Fragment, null, /*#__PURE__*/react.createElement(TodoHeader, null, /*#__PURE__*/react.createElement(src_TodoCounter_TodoCounter, {
     completedTodos: completedTodos,
-    totalTodos: totalTodos,
+    totalTodos: totalTodos
+  }), /*#__PURE__*/react.createElement(src_TodoSearch_TodoSearch, {
     searchValue: searchValue,
     setSearchValue: setSearchValue
-  }), /*#__PURE__*/react.createElement(src_TodoList_TodoList, null, error && /*#__PURE__*/react.createElement("p", null, "Something wrong"), loading && /*#__PURE__*/react.createElement("p", null, "Loading"), !loading && !searchedTodos.length && /*#__PURE__*/react.createElement("p", null, "Create your first TODO"), searchedTodos.map(todo => /*#__PURE__*/react.createElement(src_TodoItem_TodoItem, {
+  })), /*#__PURE__*/react.createElement(src_TodoList_TodoList, null, error && /*#__PURE__*/react.createElement("p", null, "Something wrong"), loading && /*#__PURE__*/react.createElement("p", null, "Loading"), !loading && !searchedTodos.length && /*#__PURE__*/react.createElement("p", null, "Create your first TODO"), searchedTodos.map(todo => /*#__PURE__*/react.createElement(src_TodoItem_TodoItem, {
     key: todo.text,
     text: todo.text,
     completed: todo.completed,
     onComplete: () => completeTodos(todo.text),
     onDelete: () => deleteTodos(todo.text)
-  }))), !!openModal && /*#__PURE__*/react.createElement(src_Modal_Modal, null, /*#__PURE__*/react.createElement(src_TodoForm_TodoForm, null)), /*#__PURE__*/react.createElement(src_CreateTodoButton_CreateTodoButton, {
+  }))), !!openModal && /*#__PURE__*/react.createElement(src_Modal_Modal, null, /*#__PURE__*/react.createElement(src_TodoForm_TodoForm, {
+    addTodos: addTodos,
+    setOpenModal: setOpenModal
+  })), /*#__PURE__*/react.createElement(src_CreateTodoButton_CreateTodoButton, {
     setOpenModal: setOpenModal
   }));
-}
-
-/* harmony default export */ var App_AppUI = (AppUI);
-;// CONCATENATED MODULE: ./src/App/index.js
-
-
- // import logo from './logo.svg';
-// import './App.css';
-// const defaultsTodos = [
-//   { text: 'Cut Onions', completed: true },
-//   { text: 'Take React course', completed: false },
-//   { text: 'Cry because the depression', completed: false },
-//   { text: 'Dance', completed: true },
-// ]
-
-function App() {
-  return /*#__PURE__*/react.createElement(TodoProvider, null, /*#__PURE__*/react.createElement(App_AppUI, null));
 }
 
 /* harmony default export */ var src_App = (App);
