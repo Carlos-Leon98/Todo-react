@@ -12,6 +12,7 @@ import { TodosError } from "../TodosError";
 import { TodosLoading } from "../TodosLoading";
 import { EmptyTodos } from "../EmptyTodos";
 import { EmptySearch } from "../EmptySearch";
+import { ChangeAlert } from "../ChangeAlert";
 
 function App() {
   const { 
@@ -26,7 +27,8 @@ function App() {
     completedTodos,
     totalTodos,
     searchValue,
-    setSearchValue
+    setSearchValue,
+    sincronizeTodos
   } = useTodos();
   
   return (
@@ -65,6 +67,8 @@ function App() {
         <CreateTodoButton  
             setOpenModal={setOpenModal}
         /> 
+
+        <ChangeAlert sincronize={sincronizeTodos} />
     </React.Fragment>
 ); 
 }
